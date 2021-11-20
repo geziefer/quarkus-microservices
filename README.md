@@ -1,2 +1,4 @@
 # quarkus-microservices
-Demo of microservice architecture based on Quarkus
+Demo of microservice architecture with Quarkus.
+Based on https://github.com/cescoffier/microservice-demo
+
