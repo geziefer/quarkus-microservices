@@ -63,13 +63,14 @@ So after cloning the repo you have the final version. Each step is then accessib
 ### Step 11: Villains Service - Implement service and DTO
 > `step_11_villainsServiceResourceAndDto
 - remove generated files
-  - remove folder `src\test\java`
   - remove class `GreetingResource`
+  - remove test classes `GreetingResourceTest` and `NativeGreetingResourceIT`
   - remove folder `src\main\resources\META-INF`
 - create DTO and REST resource
-  - create class `Villain` with name, otherName, level, String picture, String powers
+  - create class `Villain` with public name, otherName, level, String picture, String powers
   - create class `VillainResource` returning empty Villain on path `/villains`
+  - create test class `VillainsResourceTest`
   - modify `application.properties` by setting port to `9000`
 - run in terminal: `.\mvnw quarkus:dev`
-  - open `http://localhost:9000/villains`
-
+  - resume test: `r`
+  - open `http://localhost:9000/`
