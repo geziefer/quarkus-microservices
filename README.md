@@ -28,7 +28,7 @@ So after cloning the repo you have the final version. Each step is then accessib
 - Note: This demo uses Windows, adapt commands to Linux/Mac accordingly
 - Install
   - IDE of choice + git (which you surely have)
-  - Java (can be latest or last LTS release, here 17 is used)
+  - Java (should be latest LTS release, but here 11 is used)
   - Docker (Docker Desktop for Windows)
  - Clone this repo
  - Open folder in IDE
@@ -61,7 +61,7 @@ So after cloning the repo you have the final version. Each step is then accessib
   - open `http://localhost:8080/q/dev`
 
 ### Step 11: Villains Service - Implement service and DTO
-> `step_11_villainsServiceResourceAndDto
+> `step_11_serviceAndDtoImplemented`
 - remove generated files
   - remove class `GreetingResource`
   - remove test classes `GreetingResourceTest` and `NativeGreetingResourceIT`
@@ -71,6 +71,18 @@ So after cloning the repo you have the final version. Each step is then accessib
   - create class `VillainResource` returning empty Villain on path `/villains`
   - create test class `VillainsResourceTest`
   - modify `application.properties` by setting port to `9000`
+- run in terminal: `.\mvnw quarkus:dev`
+  - resume test: `r`
+  - open `http://localhost:9000/`
+
+### Step 12: Villains Service - Connect database
+> `step_12_databaseConnected`
+- use Entity instead of DTO
+  - convert class `Villain` to Panache Entitiy and select randomly from static `findAll` method
+  - use new method in class `VillainResource`
+- add testdata
+  - add file `import.sql` in `src\main\resources`
+  - add `drop-and-create` behavior to `application.properties`
 - run in terminal: `.\mvnw quarkus:dev`
   - resume test: `r`
   - open `http://localhost:9000/`
