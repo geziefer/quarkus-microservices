@@ -37,6 +37,7 @@ So after cloning the repo you have the final version. Each step is then accessib
  - Open browser
 
 ### Step 10: Villains Service - Create
+> `step_10_villainsServiceCreated`
 - goto https://code.quarkus.io/
   - fill header
     - Group: de.syrocon.cajee
@@ -49,13 +50,26 @@ So after cloning the repo you have the final version. Each step is then accessib
     - JDBC Driver - PostgreSQL
     - Hibernate ORM with Panache
   - generate application, download zip and extract
-  - show IDE
-    - show `pom.xml`
-    - show `GreetingResource.java`
-    - show `GreetingResourceTest`
-  - run in terminal: `.\mvnw quarkus:dev`
-    - show running Docker images
-    - resume test: `r`
-    - open `http://localhost:8080/hello`
-    - open `http://localhost:8080/q/dev`
-> `step_10_villainsServiceCreated`
+- show generated application
+  - show `pom.xml`
+  - show `GreetingResource.java`
+  - show `GreetingResourceTest`
+- run in terminal: `.\mvnw quarkus:dev`
+  - show running Docker images
+  - resume test: `r`
+  - open `http://localhost:8080/hello`
+  - open `http://localhost:8080/q/dev`
+
+### Step 11: Villains Service - Implement service and DTO
+> `step_11_villainsServiceResourceAndDto
+- remove generated files
+  - remove folder `src\test\java`
+  - remove class `GreetingResource`
+  - remove folder `src\main\resources\META-INF`
+- create DTO and REST resource
+  - create class `Villain` with name, otherName, level, String picture, String powers
+  - create class `VillainResource` returning empty Villain on path `/villains`
+  - modify `application.properties` by setting port to `9000`
+- run in terminal: `.\mvnw quarkus:dev`
+  - open `http://localhost:9000/villains`
+
