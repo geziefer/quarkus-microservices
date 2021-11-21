@@ -8,7 +8,7 @@ public class VillainResource {
 
     @GET
     public Villain getRandomVillain() {
-        return new Villain();
+        return Villain.getRandomVillain();
     }
 
 }
