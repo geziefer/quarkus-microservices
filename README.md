@@ -109,8 +109,9 @@ So after cloning the repo you have the final version. Each step is then accessib
   - create class `HeroRepository` as in-memory datastore and provider for random hero
   - create class `HeroesAPI` as `GraphQLApi` returning random hero
 - run in terminal: `.\mvnw quarkus:dev`
-  - open `http://localhost:9001/graphql/schema.graphql`
-  - open `http://localhost:9001/q/graphql-ui/`
+  - open `http://localhost:9001/q/dev`
+  - click GraphQL Schema
+  - click GraphQL UI
     - query for `query {randomHero {name, picture:image, level}}`
 
 ### Step 22: Heroes Service - Fill repository
@@ -119,3 +120,20 @@ So after cloning the repo you have the final version. Each step is then accessib
 - run in terminal: `.\mvnw quarkus:dev`
   - open `http://localhost:9001/q/graphql-ui/`
     - query several times for `query {randomHero {name, picture:image, level}}`
+
+### Step 30: Fight Service - Create
+> `step_30_fightServiceCreated`
+- goto https://code.quarkus.io/
+  - fill header
+    - Group: de.syrocon.cajee
+    - Artifact: fight-service
+    - Build Tool: *Maven*
+    - Version: *1.0.0-SNAPSHOT*
+    - Starter Code: no
+  - choose extensions
+    - gRPC
+    - RESTEasy Reactive
+  - generate application, download zip and extract
+- modify `application.properties` by setting http port to `9002` and grpc server port to `9003`
+- run in terminal: `.\mvnw quarkus:dev`
+
