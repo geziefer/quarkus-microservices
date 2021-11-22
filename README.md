@@ -113,3 +113,9 @@ So after cloning the repo you have the final version. Each step is then accessib
   - open `http://localhost:9001/q/graphql-ui/`
     - query for `query {randomHero {name, picture:image, level}}`
 
+### Step 22: Heroes Service - Fill repository
+> `step_22_repositoryFilled`
+- create many heroes in repository's list
+- run in terminal: `.\mvnw quarkus:dev`
+  - open `http://localhost:9001/q/graphql-ui/`
+    - query several times for `query {randomHero {name, picture:image, level}}`
