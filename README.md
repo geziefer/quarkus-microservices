@@ -118,7 +118,7 @@ So after cloning the repo you have the final version. Each step is then accessib
 
 ### Step 22: Heroes Service - Fill repository
 > `step_22_repositoryFilled`
-- create many heroes in repository's list
+- create many heroes in `HeroRepository`'s list
 - run in terminal: `.\mvnw quarkus:dev`
   - open `http://localhost:9001/q/graphql-ui/`
     - query several times for `query {randomHero {name, picture:image, level}}`
@@ -145,4 +145,16 @@ So after cloning the repo you have the final version. Each step is then accessib
 - create file `fight-service.proto` in `src\main\proto`
   - implement package fight, service FightService and messages Fighters, Hero, Villain, Fight
 - run in terminal: `.\mvnw compile`
-  - show in Explorer `target\generated-sources\grpc\de\syrocon\cajee`
+  - show files in `target\generated-sources\grpc\de\syrocon\cajee`
+
+### Step 32: Fight Service - Service and Logic
+> `step_32_fightLogicAndServiceImplemented`
+- create fights and fight service implementation
+  - create class `Figths` as business logig for fight hero vs. villain depending on their level
+  - create class `FightServiceImpl` as implementation of generated FightService
+- run in terminal: `.\mvnw quarkus:dev`
+  - open `http://localhost:9002/q/dev`
+  - click gRPC Services
+    - test FightService -> but does not work (show dev console)
+  - run in terminal (git bash): `./grpcurl.exe -plaintext -d '{"hero":{"name":"neo","level":10},"villain":{"name":"clement","level":11}}' localhost:9003 fight.FightService/fight`
+  
