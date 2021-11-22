@@ -67,7 +67,7 @@ So after cloning the repo you have the final version. Each step is then accessib
   - remove test classes `GreetingResourceTest` and `NativeGreetingResourceIT`
   - remove folder `src\main\resources\META-INF`
 - create DTO and REST resource
-  - create class `Villain` with public name, otherName, level, String picture, String powers
+  - create class `Villain` with public name, otherName, level,  picture, powers[]
   - create class `VillainResource` returning empty Villain on path `/villains`
   - create test class `VillainsResourceTest`
   - modify `application.properties` by setting port to `9000`
@@ -101,3 +101,15 @@ So after cloning the repo you have the final version. Each step is then accessib
   - generate application, download zip and extract
 - modify `application.properties` by setting port to `9001`
 - run in terminal: `.\mvnw quarkus:dev`
+
+### Step 21: Heroes Service - Implement DTO, Repository and API
+> `step_21_apiAndRepositoryAndDtoImplemented`
+- create DTO and API resource
+  - create class `Hero` with public name, longName, image, powers[], level
+  - create class `HeroRepository` as in-memory datastore and provider for random hero
+  - create class `HeroesAPI` as `GraphQLApi` returning random hero
+- run in terminal: `.\mvnw quarkus:dev`
+  - open `http://localhost:9001/graphql/schema.graphql`
+  - open `http://localhost:9001/q/graphql-ui/`
+    - query for `query {randomHero {name, picture:image, level}}`
+
