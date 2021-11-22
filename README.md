@@ -144,6 +144,5 @@ So after cloning the repo you have the final version. Each step is then accessib
 > `step_31_fightProtoCreated`
 - create file `fight-service.proto` in `src\main\proto`
   - implement package fight, service FightService and messages Fighters, Hero, Villain, Fight
-- run in terminal: `.\mvnw quarkus:dev`
+- run in terminal: `.\mvnw compile`
   - show in Explorer `target\generated-sources\grpc\de\syrocon\cajee`
-
