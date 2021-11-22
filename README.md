@@ -87,7 +87,7 @@ So after cloning the repo you have the final version. Each step is then accessib
   - resume test: `r`
   - `curl -v http://localhost:9000/`
 
-### Step 20: Villains Service - Connect database
+### Step 20: Heroes Service - Create
 > `step_20_heroesServiceCreated`
 - goto https://code.quarkus.io/
   - fill header
@@ -101,4 +101,3 @@ So after cloning the repo you have the final version. Each step is then accessib
   - generate application, download zip and extract
 - modify `application.properties` by setting port to `9001`
 - run in terminal: `.\mvnw quarkus:dev`
-
