@@ -158,3 +158,26 @@ So after cloning the repo you have the final version. Each step is then accessib
     - test FightService -> but does not work (show dev console)
   - run in terminal (git bash): `./grpcurl.exe -plaintext -d '{"hero":{"name":"neo","level":10},"villain":{"name":"clement","level":11}}' localhost:9003 fight.FightService/fight`
   
+## API Gateway: Reactive
+### Step 40: API Gateway - Create
+> `step_40_apiGatewayCreated`
+- goto https://code.quarkus.io/
+  - fill header
+    - Group: de.syrocon.cajee
+    - Artifact: api-gateway
+    - Build Tool: *Maven*
+    - Version: *1.0.0-SNAPSHOT*
+    - Starter Code: no
+  - choose extensions
+    - RESTEasy Reactive
+    - REST Client Reactive
+    - SmallRye GraphQL Client
+    - SmallRye Reactive Messaging - Kafka Connector
+    - Eclipse Vert.x
+    - SmallRye OpenAPI
+    - SmallRye Fault Tolerance
+    - gRPC
+  - generate application, download zip and extract
+- modify `application.properties` by setting http port to `9999`
+- run in terminal: `.\mvnw quarkus:dev`
+  - open `http://localhost:9999/q/dev`
