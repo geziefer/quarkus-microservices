@@ -33,7 +33,7 @@ So after cloning the repo you have the final version. Each step is then accessib
  - Clone this repo
  - Open folder in IDE
  - Start Docker
- - Open 6 terminals
+ - Open 5 terminals + git bash
  - Open browser
 
 ### Step 10: Villains Service - Create
@@ -85,4 +85,20 @@ So after cloning the repo you have the final version. Each step is then accessib
   - add `drop-and-create` behavior to `application.properties`
 - run in terminal: `.\mvnw quarkus:dev`
   - resume test: `r`
-  - open `http://localhost:9000/`
+  - `curl -v http://localhost:9000/`
+
+### Step 20: Villains Service - Connect database
+> `step_20_heroesServiceCreated`
+- goto https://code.quarkus.io/
+  - fill header
+    - Group: de.syrocon.cajee
+    - Artifact: heroes-service
+    - Build Tool: *Maven*
+    - Version: *1.0.0-SNAPSHOT*
+    - Starter Code: no
+  - choose extensions
+    - SmallRye GraphQL
+  - generate application, download zip and extract
+- modify `application.properties` by setting port to `9001`
+- run in terminal: `.\mvnw quarkus:dev`
+
