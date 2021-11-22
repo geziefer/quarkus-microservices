@@ -23,7 +23,7 @@ In order to understand the single steps of the development, you'll find several 
 
 So after cloning the repo you have the final version. Each step is then accessible by `git checkout -f <tagname>`.
 
-### Step 00: Prerequisites
+## Prerequisites
 > `step_00_initial`
 - Note: This demo uses Windows, adapt commands to Linux/Mac accordingly
 - Install
@@ -36,6 +36,7 @@ So after cloning the repo you have the final version. Each step is then accessib
  - Open 5 terminals + git bash
  - Open browser
 
+## Villains Service: REST
 ### Step 10: Villains Service - Create
 > `step_10_villainsServiceCreated`
 - goto https://code.quarkus.io/
@@ -87,6 +88,7 @@ So after cloning the repo you have the final version. Each step is then accessib
   - resume test: `r`
   - `curl -v http://localhost:9000/`
 
+## Heroes Service: GraphQL
 ### Step 20: Heroes Service - Create
 > `step_20_heroesServiceCreated`
 - goto https://code.quarkus.io/
@@ -121,6 +123,7 @@ So after cloning the repo you have the final version. Each step is then accessib
   - open `http://localhost:9001/q/graphql-ui/`
     - query several times for `query {randomHero {name, picture:image, level}}`
 
+## Fight Service: gRPC
 ### Step 30: Fight Service - Create
 > `step_30_fightServiceCreated`
 - goto https://code.quarkus.io/
@@ -136,4 +139,11 @@ So after cloning the repo you have the final version. Each step is then accessib
   - generate application, download zip and extract
 - modify `application.properties` by setting http port to `9002` and grpc server port to `9003`
 - run in terminal: `.\mvnw quarkus:dev`
+
+### Step 31: Fight Service - Proto
+> `step_31_fightProtoCreated`
+- create file `fight-service.proto` in `src\main\proto`
+  - implement package fight, service FightService and messages Fighters, Hero, Villain, Fight
+- run in terminal: `.\mvnw quarkus:dev`
+  - show in Explorer `target\generated-sources\grpc\de\syrocon\cajee`
 
