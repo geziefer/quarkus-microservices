@@ -248,6 +248,6 @@ So after cloning the repo you have the final version. Each step is then accessib
 - create class `Fight` with public villain, hero, winner and constructor
 - create class `WinRatio` with privat count, villain, hero and getters and method `accumulate` to extract data from `Fight`
 - create class `FightProcessor` with method `ratio` which consumes `fights` and produces `ratio` as broadcast
+- create class `FightDeserializer` as `ObjectMapperDeserializer`for `Fight`
 - create class `StatsResource` with `ratio` channel and producer for Server Sent Events
 - run in terminal: `.\mvnw quarkus:dev`
-
