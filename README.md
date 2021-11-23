@@ -161,6 +161,7 @@ So after cloning the repo you have the final version. Each step is then accessib
 ## API Gateway: Reactive
 ### Step 40: API Gateway - Create
 > `step_40_apiGatewayCreated`
+> - Note: commited tag contains RESTEasy Reactive and REST Client Reactive without Jackson, will be corrected in step 44
 - goto https://code.quarkus.io/
   - fill header
     - Group: de.syrocon.cajee
@@ -169,8 +170,8 @@ So after cloning the repo you have the final version. Each step is then accessib
     - Version: *1.0.0-SNAPSHOT*
     - Starter Code: no
   - choose extensions
-    - RESTEasy Reactive
-    - REST Client Reactive
+    - RESTEasy Reactive Jackson
+    - REST Client Reactive Jackson
     - SmallRye GraphQL Client
     - SmallRye Reactive Messaging - Kafka Connector
     - Eclipse Vert.x
@@ -200,3 +201,13 @@ So after cloning the repo you have the final version. Each step is then accessib
 - modify `application.properties` by setting host and port for fight-service
 - run in terminal: `.\mvnw compile`
   - show files in `target\generated-sources\grpc\de\syrocon\cajee`
+
+### Step 44: API Gateway - Implement API
+> `step_44_apiImplemented`
+> - correct `pom.xml` to use Jackson
+- extend classes `Villain` and `Hero`by methods `toGrpc`and `fromGrpc`
+- create class `APi` with public name, picture, level
+- modify `application.properties` by setting url from villain-service and and grpc server port to `9005`
+- run in terminal: `.\mvnw quarkus:dev`
+  - start villains-service, hero-service, fight-service in separate terminals with `.\mvnw quarkus:dev`
+  - execute in additional terminal: `curl -kv http://localhost:9999/api`
