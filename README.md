@@ -262,3 +262,17 @@ So after cloning the repo you have the final version. Each step is then accessib
 - run in separate terminal: `.\mvnw quarkus:dev`
   - start stats-service with `.\mvnw quarkus:dev`
   - open `http://localhost:9006/q/dev`
+
+### Step 53: Fault Tolerance & Logging
+> `step_53_faulttoleranceAndLoggingAdded`
+- API Gateway: extend class `VillainClient` with `NonBlocking` and `CircuitBreaker`
+- API Gateway: extend class `Api` with `NonBlocking` and `Retry` and logging fight and winner
+- Villains Service: extend class `VillainResource` with logging villain
+- Hero Service: extend class `HeroesAPI` with logging hero
+- Fight Service: extend class `Fights` with logging fight
+- Stats Service: extend class `StatsResource` with logging event
+- start villains-service, hero-service, fight-service, api-gateway, stats-service in separate terminals with `.\mvnw quarkus:dev`
+- run in additional terminal: `curl -N --http2 -H "Accept:text/event-stream" http://localhost:9006/stats`
+  - open `http://localhost:9999/`
+  - play
+  - check terminal logs
