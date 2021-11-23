@@ -181,3 +181,10 @@ So after cloning the repo you have the final version. Each step is then accessib
 - modify `application.properties` by setting http port to `9999`
 - run in terminal: `.\mvnw quarkus:dev`
   - open `http://localhost:9999/q/dev`
+
+### Step 41: API Gateway - Implement Villains REST Client
+> `step_41_villainsClientImplemented`
+- create class `Villain` with public name, picture, level
+- create interface `VillainClient` for calling villain-service
+- modify `application.properties` by setting url from villain-service
+
