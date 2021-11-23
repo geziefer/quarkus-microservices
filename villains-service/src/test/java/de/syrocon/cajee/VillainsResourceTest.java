@@ -10,7 +10,7 @@ import static org.hamcrest.Matchers.hasKey;
 public class VillainsResourceTest {
 
     @Test
-    public void testHelloEndpoint() {
+    public void testVillain() {
         given()
           .when().get("/")
           .then()
