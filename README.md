@@ -223,3 +223,21 @@ So after cloning the repo you have the final version. Each step is then accessib
   - open `http://localhost:9999/`
   - play
 
+## Stats Service: Kafka
+### Step 50: Stats Service - Create
+> `step_50_statsServiceCreated`
+- goto https://code.quarkus.io/
+  - fill header
+    - Group: de.syrocon.cajee
+    - Artifact: stats-service
+    - Build Tool: *Maven*
+    - Version: *1.0.0-SNAPSHOT*
+    - Starter Code: no
+  - choose extensions
+    - RESTEasy Reactive Jackson
+    - SmallRye Reactive Messaging - Kafka Connector
+  - generate application, download zip and extract
+- modify `application.properties` by setting http port to `9006`
+- run in terminal: `.\mvnw quarkus:dev`
+  - open `http://localhost:9006/q/dev`
+
