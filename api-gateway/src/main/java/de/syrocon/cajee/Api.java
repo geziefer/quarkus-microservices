@@ -4,10 +4,12 @@ import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
+import org.eclipse.microprofile.reactive.messaging.Channel;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import io.quarkus.grpc.GrpcClient;
 import io.smallrye.mutiny.Uni;
+import io.smallrye.reactive.messaging.MutinyEmitter;
 
 @Path("/api")
 public class Api {
@@ -21,6 +23,9 @@ public class Api {
     @GrpcClient("fight-service")
     FightService fight;
 
+    @Channel("fights")
+    MutinyEmitter<Fight> emitter;
+
     @GET
     public Uni<Fight> fight() {
         Uni<Villain> villain = villains.getVillain();
@@ -32,7 +37,8 @@ public class Api {
                     Villain v = tuple.getItem2();
 
                     return invokeFightService(fight, h, v);
-                });
+                })
+                .call(fight -> emitter.send(fight));
     }
 
     private Uni<Fight> invokeFightService(FightService fs, Hero hero, Villain villain) {
