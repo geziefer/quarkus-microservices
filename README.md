@@ -211,3 +211,15 @@ So after cloning the repo you have the final version. Each step is then accessib
 - run in terminal: `.\mvnw quarkus:dev`
   - start villains-service, hero-service, fight-service in separate terminals with `.\mvnw quarkus:dev`
   - execute in additional terminal: `curl -kv http://localhost:9999/api`
+
+### Step 45: API Gateway - Implement Webpage
+> `step_45_webpageImplemented`
+- create graphic `vs.png` in `src\main\resources\META-INF\resources`
+- create webpage `index.html` in `src\main\resources\META-INF\resources`
+  - create 2 `div` for displaying villain picture and hero pciture with vs graphic in between
+  - create button which calls JS function
+  - implement function which calls `/api`, extract results from JSON and fills villain and hero and shows winner
+- run in terminal: `.\mvnw quarkus:dev`
+  - open `http://localhost:9999/`
+  - play
+
