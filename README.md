@@ -220,6 +220,8 @@ So after cloning the repo you have the final version. Each step is then accessib
   - create button which calls JS function
   - implement function which calls `/api`, extract results from JSON and fills villain and hero and shows winner
 - run in terminal: `.\mvnw quarkus:dev`
+  - open `http://localhost:9999/q/dev`
+    - show OpenAPI
   - open `http://localhost:9999/`
   - play
 
@@ -239,7 +241,6 @@ So after cloning the repo you have the final version. Each step is then accessib
   - generate application, download zip and extract
 - modify `application.properties` by setting http port to `9006`
 - run in terminal: `.\mvnw quarkus:dev`
-  - open `http://localhost:9006/q/dev`
 
 ### Step 51: Stats Service - Implement
 > `step_51_statsServiceImplemented`
@@ -251,3 +252,13 @@ So after cloning the repo you have the final version. Each step is then accessib
 - create class `FightDeserializer` as `ObjectMapperDeserializer`for `Fight`
 - create class `StatsResource` with `ratio` channel and producer for Server Sent Events
 - run in terminal: `.\mvnw quarkus:dev`
+  - open 
+
+### Step 52: API Gateway - Send Events
+> `step_52_apiGatewayEventsSent`
+- extend class `Api` emitting `Fight` to channel
+- implement class `FightSerializer` as `ObjectMapperSerializer`for `Fight`
+- modify `application.properties` by adding `smallrye-kafka` as connector for `flights`
+- run in separate terminal: `.\mvnw quarkus:dev`
+  - start stats-service with `.\mvnw quarkus:dev`
+  - open `http://localhost:9006/q/dev`
