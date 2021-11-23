@@ -4,10 +4,13 @@ import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
+import org.eclipse.microprofile.faulttolerance.Retry;
 import org.eclipse.microprofile.reactive.messaging.Channel;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import io.quarkus.grpc.GrpcClient;
+import io.quarkus.logging.Log;
+import io.smallrye.common.annotation.NonBlocking;
 import io.smallrye.mutiny.Uni;
 import io.smallrye.reactive.messaging.MutinyEmitter;
 
@@ -41,6 +44,8 @@ public class Api {
                 .call(fight -> emitter.send(fight));
     }
 
+    @Retry(maxRetries = 5)
+    @NonBlocking
     private Uni<Fight> invokeFightService(FightService fs, Hero hero, Villain villain) {
         FightServiceOuterClass.Fighters fighters = FightServiceOuterClass.Fighters.newBuilder()
                 .setHero(hero.toGrpc())
@@ -50,6 +55,7 @@ public class Api {
         return fs.fight(fighters)
                 .onItem().transform(result -> {
                         String winner = result.getWinner();
+                        Log.info("Fight " + hero.name + " vs. " + villain.name + ": " + winner + " wins");
                         return new Fight(hero, villain, winner);
         });
     }

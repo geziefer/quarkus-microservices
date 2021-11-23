@@ -5,6 +5,7 @@ import javax.enterprise.context.ApplicationScoped;
 import org.eclipse.microprofile.reactive.messaging.Incoming;
 import org.eclipse.microprofile.reactive.messaging.Outgoing;
 
+import io.quarkus.logging.Log;
 import io.smallrye.reactive.messaging.annotations.Broadcast;
 
 @ApplicationScoped
@@ -16,6 +17,8 @@ public class FightProcessor {
     @Outgoing("ratio")
     @Broadcast
     public WinRatio ratio(Fight f) {
-        return ratio.accumulate(f);
+        ratio.accumulate(f);
+        Log.info("Total: " + ratio.getCount() + ", Heroes: " + ratio.getHero() + ", Villains: " + ratio.getVillain());
+        return ratio;
     }
 }
