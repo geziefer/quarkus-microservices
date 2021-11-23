@@ -188,3 +188,9 @@ So after cloning the repo you have the final version. Each step is then accessib
 - create interface `VillainClient` for calling villain-service
 - modify `application.properties` by setting url from villain-service
 
+### Step 42: API Gateway - Implement Heroes GraphQL Client
+> `step_42_heroesClientImplemented`
+- create class `Hero` with public name, picture, level
+- create class `HeroesClient` for calling heroes-service
+- modify `application.properties` by setting url from villain-service
+
