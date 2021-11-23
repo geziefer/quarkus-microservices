@@ -194,3 +194,9 @@ So after cloning the repo you have the final version. Each step is then accessib
 - create class `HeroesClient` for calling heroes-service
 - modify `application.properties` by setting url from villain-service
 
+### Step 43: API Gateway - Create Fight gRPC Client
+> `step_43_fightClientCreated`
+- copy file `fight-service.proto` to `src\main\proto` from fight-service
+- modify `application.properties` by setting host and port for fight-service
+- run in terminal: `.\mvnw compile`
+  - show files in `target\generated-sources\grpc\de\syrocon\cajee`
