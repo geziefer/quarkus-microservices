@@ -25,16 +25,16 @@ So after cloning the repo you have the final version. Each step is then accessib
 
 ## Prerequisites
 > `step_00_initial`
-- Note: This demo uses Windows, adapt commands to Linux/Mac accordingly
-- Install
+- note: This demo uses Windows, adapt commands to Linux/Mac accordingly
+- install
   - IDE of choice + git (which you surely have)
   - Java (should be latest LTS release, but here 11 is used)
   - Docker (Docker Desktop for Windows)
- - Clone this repo
- - Open folder in IDE
- - Start Docker
- - Open 5 terminals git bash
- - Open browser
+- clone this repo
+ - open folder in IDE
+ - start Docker
+ - open 7 terminals git bash in project root
+ - open browser
 
 ## Villains Service: REST
 ### Step 10: Villains Service - Create
@@ -51,10 +51,7 @@ So after cloning the repo you have the final version. Each step is then accessib
     - JDBC Driver - PostgreSQL
     - Hibernate ORM with Panache
   - generate application, download zip and extract
-- show generated application
-  - show `pom.xml`
-  - show `GreetingResource.java`
-  - show `GreetingResourceTest`
+- show generated application (pom, resource, test)
 - run in terminal: `.\mvnw quarkus:dev`
   - show running Docker images
   - resume test: `r`
@@ -63,30 +60,26 @@ So after cloning the repo you have the final version. Each step is then accessib
 
 ### Step 11: Villains Service - Implement service and DTO
 > `step_11_serviceAndDtoImplemented`
-- remove generated files
-  - remove class `GreetingResource`
-  - remove test classes `GreetingResourceTest` and `NativeGreetingResourceIT`
-  - remove folder `src\main\resources\META-INF`
-- create DTO and REST resource
-  - create class `Villain` with public name, otherName, level,  picture, powers[]
-  - create class `VillainResource` returning empty Villain on path `/villains`
-  - create test class `VillainsResourceTest`
-  - modify `application.properties` by setting port to `9000`
+- remove class `GreetingResource`
+- remove test classes `GreetingResourceTest` and `NativeGreetingResourceIT`
+- remove folder `src\main\resources\META-INF`
+- create class `Villain` with public name, otherName, level,  picture, powers[]
+- create class `VillainResource` returning empty Villain on path `/villains`
+- create test class `VillainsResourceTest`
+- modify `application.properties` by setting port to `9000`
 - run in terminal: `.\mvnw quarkus:dev`
   - resume test: `r`
   - open `http://localhost:9000/`
 
 ### Step 12: Villains Service - Connect database
 > `step_12_databaseConnected`
-- use Entity instead of DTO
-  - convert class `Villain` to Panache Entitiy and select randomly from static `findAll` method
-  - use new method in class `VillainResource`
-- add testdata
-  - add file `import.sql` in `src\main\resources`
-  - add `drop-and-create` behavior to `application.properties`
+- modify class `Villain` to use Panache Entitiy and static `findAll` method
+- modify class `VillainResource`by using new method
+- add testdata file `import.sql` in `src\main\resources`
+- modify `application.properties` with `drop-and-create` behavior
 - run in terminal: `.\mvnw quarkus:dev`
   - resume test: `r`
-  - `curl -v http://localhost:9000/`
+  - run in terminal: `curl -v http://localhost:9000/`
 
 ## Heroes Service: GraphQL
 ### Step 20: Heroes Service - Create
@@ -102,23 +95,19 @@ So after cloning the repo you have the final version. Each step is then accessib
     - SmallRye GraphQL
   - generate application, download zip and extract
 - modify `application.properties` by setting port to `9001`
-- run in terminal: `.\mvnw quarkus:dev`
 
 ### Step 21: Heroes Service - Implement DTO, Repository and API
 > `step_21_apiAndRepositoryAndDtoImplemented`
-- create DTO and API resource
-  - create class `Hero` with public name, longName, image, powers[], level
-  - create class `HeroRepository` as in-memory datastore and provider for random hero
-  - create class `HeroesAPI` as `GraphQLApi` returning random hero
+- create class `Hero` with public name, longName, image, powers[], level
+- create class `HeroRepository` as in-memory datastore and provider for random hero
+- create class `HeroesAPI` as `GraphQLApi` returning random hero
 - run in terminal: `.\mvnw quarkus:dev`
   - open `http://localhost:9001/q/dev`
   - click GraphQL Schema
-  - click GraphQL UI
-    - query for `query {randomHero {name, picture:image, level}}`
 
 ### Step 22: Heroes Service - Fill repository
 > `step_22_repositoryFilled`
-- create many heroes in `HeroRepository`'s list
+- modify class `HeroRepository` by adding many heroes
 - run in terminal: `.\mvnw quarkus:dev`
   - open `http://localhost:9001/q/graphql-ui/`
     - query several times for `query {randomHero {name, picture:image, level}}`
@@ -138,7 +127,6 @@ So after cloning the repo you have the final version. Each step is then accessib
     - RESTEasy Reactive
   - generate application, download zip and extract
 - modify `application.properties` by setting http port to `9002` and grpc server port to `9003`
-- run in terminal: `.\mvnw quarkus:dev`
 
 ### Step 31: Fight Service - Proto
 > `step_31_fightProtoCreated`
@@ -155,13 +143,14 @@ So after cloning the repo you have the final version. Each step is then accessib
 - run in terminal: `.\mvnw quarkus:dev`
   - open `http://localhost:9002/q/dev`
   - click gRPC Services
-    - test FightService -> but does not work (show dev console)
-  - run in terminal (git bash): `./grpcurl.exe -plaintext -d '{"hero":{"name":"neo","level":10},"villain":{"name":"clement","level":11}}' localhost:9003 fight.FightService/fight`
+    - test FightService with `{"hero":{"name":"neo","level":10},"villain":{"name":"clement","level":11}}`
+    - note: does not work (see dev console)
+  - instead: run in terminal (git bash): `./grpcurl.exe -plaintext -d '{"hero":{"name":"neo","level":10},"villain":{"name":"clement","level":11}}' localhost:9003 fight.FightService/fight`
   
 ## API Gateway: Reactive
 ### Step 40: API Gateway - Create
 > `step_40_apiGatewayCreated`
-> - Note: commited tag contains RESTEasy Reactive and REST Client Reactive without Jackson, will be corrected in step 44
+> - note: commited tag contains RESTEasy Reactive and REST Client Reactive without Jackson, will be corrected in step 44
 - goto https://code.quarkus.io/
   - fill header
     - Group: de.syrocon.cajee
@@ -180,8 +169,6 @@ So after cloning the repo you have the final version. Each step is then accessib
     - gRPC
   - generate application, download zip and extract
 - modify `application.properties` by setting http port to `9999`
-- run in terminal: `.\mvnw quarkus:dev`
-  - open `http://localhost:9999/q/dev`
 
 ### Step 41: API Gateway - Implement Villains REST Client
 > `step_41_villainsClientImplemented`
@@ -210,7 +197,7 @@ So after cloning the repo you have the final version. Each step is then accessib
 - modify `application.properties` by setting url from villain-service and and grpc server port to `9005`
 - run in terminal: `.\mvnw quarkus:dev`
   - start villains-service, hero-service, fight-service in separate terminals with `.\mvnw quarkus:dev`
-  - execute in additional terminal: `curl -kv http://localhost:9999/api`
+  - execute in additional terminal several times: `curl -kv http://localhost:9999/api`
 
 ### Step 45: API Gateway - Implement Webpage
 > `step_45_webpageImplemented`
@@ -222,8 +209,6 @@ So after cloning the repo you have the final version. Each step is then accessib
 - run in terminal: `.\mvnw quarkus:dev`
   - open `http://localhost:9999/q/dev`
     - show OpenAPI
-  - open `http://localhost:9999/`
-  - play
 
 ## Stats Service: Kafka
 ### Step 50: Stats Service - Create
@@ -240,7 +225,6 @@ So after cloning the repo you have the final version. Each step is then accessib
     - SmallRye Reactive Messaging - Kafka Connector
   - generate application, download zip and extract
 - modify `application.properties` by setting http port to `9006`
-- run in terminal: `.\mvnw quarkus:dev`
 
 ### Step 51: Stats Service - Implement
 > `step_51_statsServiceImplemented`
@@ -251,8 +235,6 @@ So after cloning the repo you have the final version. Each step is then accessib
 - create class `FightProcessor` with method `ratio` which consumes `fights` and produces `ratio` as broadcast
 - create class `FightDeserializer` as `ObjectMapperDeserializer`for `Fight`
 - create class `StatsResource` with `ratio` channel and producer for Server Sent Events
-- run in terminal: `.\mvnw quarkus:dev`
-  - open 
 
 ### Step 52: API Gateway - Send Events
 > `step_52_apiGatewayEventsSent`
@@ -262,6 +244,7 @@ So after cloning the repo you have the final version. Each step is then accessib
 - run in separate terminal: `.\mvnw quarkus:dev`
   - start stats-service with `.\mvnw quarkus:dev`
   - open `http://localhost:9006/q/dev`
+    - show Kafka channel
 
 ### Step 53: Fault Tolerance & Logging
 > `step_53_faulttoleranceAndLoggingAdded`
@@ -274,5 +257,5 @@ So after cloning the repo you have the final version. Each step is then accessib
 - start villains-service, hero-service, fight-service, api-gateway, stats-service in separate terminals with `.\mvnw quarkus:dev`
 - run in additional terminal: `curl -N --http2 -H "Accept:text/event-stream" http://localhost:9006/stats`
   - open `http://localhost:9999/`
-  - play
-  - check terminal logs
+  - play several times
+  - show terminal logs
