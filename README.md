@@ -33,7 +33,7 @@ So after cloning the repo you have the final version. Each step is then accessib
  - Clone this repo
  - Open folder in IDE
  - Start Docker
- - Open 5 terminals + git bash
+ - Open 5 terminals git bash
  - Open browser
 
 ## Villains Service: REST
@@ -240,4 +240,14 @@ So after cloning the repo you have the final version. Each step is then accessib
 - modify `application.properties` by setting http port to `9006`
 - run in terminal: `.\mvnw quarkus:dev`
   - open `http://localhost:9006/q/dev`
+
+### Step 51: Stats Service - Implement
+> `step_51_statsServiceImplemented`
+- create class `Villain` with public name, picture, level
+- create class `Hero` with public name, picture, level
+- create class `Fight` with public villain, hero, winner and constructor
+- create class `WinRatio` with privat count, villain, hero and getters and method `accumulate` to extract data from `Fight`
+- create class `FightProcessor` with method `ratio` which consumes `fights` and produces `ratio` as broadcast
+- create class `StatsResource` with `ratio` channel and producer for Server Sent Events
+- run in terminal: `.\mvnw quarkus:dev`
 
